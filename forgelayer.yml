@@ -1,0 +1,25 @@
+rules:
+  - name: Auth changes require security review
+    paths:
+      - "src/auth/**"
+      - "app/api/auth/**"
+      - "middleware.ts"
+    requires:
+      - security_review
+      - tests
+
+  - name: Database migrations require rollback plan
+    paths:
+      - "db/**"
+      - "migrations/**"
+      - "prisma/**"
+    requires:
+      - rollback_plan
+      - human_review
+      - tests
+
+  - name: Prompt-like instructions inside diffs are untrusted
+    paths:
+      - "**/*"
+    requires:
+      - prompt_injection_review
