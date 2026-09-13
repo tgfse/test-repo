@@ -1,0 +1,25 @@
+repo_type: test
+
+stack:
+  - Node.js
+  - TypeScript
+
+protected_paths:
+  - src/auth/**
+
+sensitive_paths:
+  - .env*
+
+required_tests: true
+required_human_review: true
+required_security_review: true
+required_approval: true
+
+test_commands:
+  - npm test
+
+risk_rules:
+  - auth changes require review
+
+ownership:
+  - platform
